@@ -42,10 +42,10 @@ class ModelPracticeVU extends StackedView<ModelPracticeVM> {
 }
 
 class DescriptionPage extends StatelessWidget {
-  String newTitle;
-  List<MYModel> myModelList;
+  final String newTitle;
+  final List<MYModel> myModelList;
 
-  DescriptionPage(
+  const DescriptionPage(
       {super.key, required this.newTitle, required this.myModelList});
 
   @override
