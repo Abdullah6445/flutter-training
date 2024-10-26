@@ -1,5 +1,6 @@
-import 'package:flutetr_training_application/models_practice/model_practice_vu.dart';
 import 'package:flutter/material.dart';
+
+import 'todo_application/todo_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         useMaterial3: false,
       ),
-      home: const ModelPracticeVU(),
+      home: TodoScreen(),
     );
   }
 }
