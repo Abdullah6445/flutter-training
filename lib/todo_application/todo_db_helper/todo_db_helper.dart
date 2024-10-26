@@ -66,8 +66,6 @@ class DBHelper {
     List<Map<String, dynamic>> tasks =
         await db.rawQuery('SELECT * FROM todo_tbl ORDER BY task_id ASC');
 
-    print(tasks);
-
     return tasks;
   }
 }
