@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'json_serialization/serialize.dart';
 import 'todo_application/todo_provider/todo_provider.dart';
 import 'todo_application/todo_screen.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.purple,
           useMaterial3: false,
         ),
-        home: TodoScreen(),
+        home: SerializePage(),
       ),
     );
   }
