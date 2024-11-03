@@ -10,6 +10,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutetr_training_application/todo_application/todo_model/todo_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 // import 'package:flutter/services.dart';
 import 'package:path/path.dart';
@@ -49,7 +50,6 @@ class DBHelper {
       List<int> bytes =
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(path).writeAsBytes(bytes);
-      getTasks();
     }
 
     Database db = await openDatabase(path, version: 2);
@@ -61,15 +61,144 @@ class DBHelper {
     return await File(path).exists();
   }
 
-  getTasks() async {
+  // List<Map<String, dynamic>> tasks =
+  //       await db.rawQuery('SELECT * FROM todo_tbl ORDER BY task_id ASC');
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  //
+  /////////////////
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  Future<List<TodoModel>> fetchTaskData() async {
     final db = await database;
+
+    List<TodoModel> list;
+
     List<Map<String, dynamic>> tasks =
         await db.rawQuery('SELECT * FROM todo_tbl ORDER BY task_id ASC');
 
-    return tasks;
+    list = TodoModelMain.fromJson(tasks).todoModelList ?? [];
+
+    return list;
+  }
+
+  Future<List<TodoModel>> insertData(
+      String taskTitle, String taskDescription) async {
+    final db = await database;
+
+    List<TodoModel> list;
+
+    List<Map<String, dynamic>> tasks = await db.rawQuery(
+      'INSERT INTO todo_tbl (task_title, task_description) VALUES (?, ?)',
+      [taskTitle, taskDescription],
+    );
+    list = TodoModelMain.fromJson(tasks).todoModelList ?? [];
+
+    return list;
+  }
+
+  deleteData(int id) async {
+    final db = await database;
+
+    await db.rawDelete('DELETE FROM todo_tbl WHERE task_id = ?', [id]);
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Future<List<TodoModel>> getTodoTasks() async {
+//     final db = await database;
+
+//     List<TodoModel> myTodoList = [];
+//     myTodoList = TodoModelMain.fromJson(tasks).todoModelList ?? [];
+
+//     return myTodoList;
+//   }
 
 
 
