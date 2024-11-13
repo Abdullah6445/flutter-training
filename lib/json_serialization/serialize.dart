@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class SerializePage extends StatefulWidget {
@@ -8,37 +10,12 @@ class SerializePage extends StatefulWidget {
 }
 
 class _SerializePageState extends State<SerializePage> {
-  String jsonString = '''
-[
-  {
-    "name": "Ayesha",
-    "age": "25",
-    "email": "ayesha.khan123@example.com"
-  },
-  {
-    "name": "Omar",
-    "age": "30",
-    "email": "omar.ali456@example.com"
-  },
-  {
-    "name": "Zainab",
-    "age": "28",
-    "email": "zainab.farooq789@example.com"
-  },
-  {
-    "name": "Ahmed",
-    "age": "27",
-    "email": "ahmed.jamil001@example.com"
-  },
-  {
-    "name": "Sara",
-    "age": "24",
-    "email": "sara.naqvi202@example.com"
+  @override
+  void initState() {
+    super.initState();
   }
-]
-''';
 
-  PersonModelMain? pmm;
+  PersonModelMain pmm = PersonModelMain.fromJson();
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +24,12 @@ class _SerializePageState extends State<SerializePage> {
         title: const Text("json decerialization"),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        // itemCount: pmm.personListt.length,
+        itemCount: pmm.personListt!.length,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(index.toString()),
-            subtitle: Text(pmm!.personList![index].name),
+            subtitle: Text(pmm.personListt![index].name),
           );
         },
       ),
@@ -60,23 +38,59 @@ class _SerializePageState extends State<SerializePage> {
 }
 
 class PersonModelMain {
-  List<PersonModel>? personList;
-  PersonModelMain({required this.personList});
-
-  PersonModelMain.fromJson(List<Map<String, dynamic>> json) {
-    personList = [];
-
-    for (var i = 0; i < json.length; i++) {
-      PersonModel pm = PersonModel.fromJson(json[i]);
-
-      personList!.add(pm);
+  String jsonString = '''
+  [
+    {
+      "name": "Ayesha",
+      "age": "25",
+      "email": "ayesha.khan123@example.com"
+    },
+    {
+      "name": "Omar",
+      "age": "30",
+      "email": "omar.ali456@example.com"
+    },
+    {
+      "name": "Zainab",
+      "age": "28",
+      "email": "zainab.farooq789@example.com"
+    },
+    {
+      "name": "Ahmed",
+      "age": "27",
+      "email": "ahmed.jamil001@example.com"
+    },
+    {
+      "name": "Sara",
+      "age": "24",
+      "email": "sara.naqvi202@example.com"
     }
+  ]
+  ''';
+
+  List<PersonModel>? personListt;
+
+  PersonModelMain.fromJson() {
+    personListt = [];
+
+    List<dynamic> decodedData = jsonDecode(jsonString);
+
+    personListt = decodedData
+        .map(
+          (e) => PersonModel.fromJson(e),
+        )
+        .toList();
+
+    // for (var i = 0; i < decodedData.length; i++) {
+    //   PersonModel pm = PersonModel.fromJson(decodedData[i]);
+    //   personListt!.add(pm);
+    // }
   }
 }
 
 class PersonModel {
   String name;
-  int age;
+  String age;
   String email;
 
   PersonModel({required this.name, required this.age, required this.email});
@@ -90,10 +104,67 @@ class PersonModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'age': age,
-      'email': email,
-    };
+    return {'name': name, 'age': age, 'email': email};
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   List<PersonModelMain>? personList;
+
+//   PersonModelMainnnn() {
+//     List<dynamic> jsonData = jsonDecode(jsonString);
+//     personList = [];
+
+//     for (var i = 0; i < jsonData.length; i++) {
+//       PersonModelMain pm = PersonModelMain.fromJson(jsonData[i]);
+//       personList!.add(pm);
+//     }
+//   }
+// }
+
+// class PersonModelMain {
+//   String name;
+//   String age;
+//   String email;
+
+//   PersonModelMain({
+//     required this.name,
+//     required this.age,
+//     required this.email,
+//   });
+
+//   factory PersonModelMain.fromJson(Map<String, dynamic> map) {
+//     return PersonModelMain(
+//       name: map['name'],
+//       age: map['age'],
+//       email: map['email'],
+//     );
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'name': name,
+//       'age': age,
+//       'email': email,
+//     };
+//   }
+// }
+
+
+
