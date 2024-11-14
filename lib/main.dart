@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'api_by_myself/user_screen_vu.dart';
 import 'json_serialization/serialize.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         useMaterial3: false,
       ),
-      home: SerializePage(),
+      home: UserScreenVU(),
       // ),
     );
   }
