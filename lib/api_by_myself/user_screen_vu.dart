@@ -40,7 +40,7 @@ class UserScreenVU extends StackedView<UserScreenVM> {
                       itemCount: viewModel.userActualList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(),
+                          title: Text(viewModel.userActualList[index].name),
                         );
                       },
                     );

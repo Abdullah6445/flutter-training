@@ -6,6 +6,30 @@ import 'package:http/http.dart' as http;
 
 class UserScreenVM extends BaseViewModel {
   List<UserModel> userActualList = [];
+  gettingData() async {
+    final response =
+        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+
+    List<dynamic> decodedList = jsonDecode(response.body);
+
+    for (var i = 0; i < decodedList.length; i++) {
+      UserModel um = UserModel.fromJson(decodedList[i]);
+      userActualList.add(um);
+    }
+
+    // for (var i = 0; i < decodedList.length; i++) {
+    //   UserModel um = UserModel.fromJson(decodedList[i]);`
+    //   userActualList.add(um);
+    // }
+
+    // userActualList = decodedList
+    //     .map(
+    //       (e) => UserModel.fromJson(e),
+    //     )
+    //     .toList();
+
+    return userActualList;
+  }
 }
 
 class UserModel {
@@ -16,9 +40,35 @@ class UserModel {
   String phone;
   String webSite;
 
+  UserModel({
+    required this.id,
+    required this.name,
+    required this.userName,
+    required this.email,
+    required this.phone,
+    required this.webSite,
+  });
 
-  User,,,,,
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+        id: json['id'],
+        name: json['name'],
+        userName: json['username'],
+        phone: json['phone'],
+        webSite: json['website'],
+        email: json['email']);
+  }
 
+  toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'username': userName,
+      'email': email,
+      'phone': phone,
+      'website': webSite,
+    };
+  }
 }
 
 
