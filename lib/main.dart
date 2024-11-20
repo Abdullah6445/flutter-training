@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'api_by_myself/user_screen_vu.dart';
 import 'streams/currency_stream.dart';
 import 'streams/streams_page.dart';
 
@@ -12,10 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bitcoin Live Price',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: StreamsPage(), // Set BitcoinScreen as the home screen
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
+      home: UserScreenVU(), // Set BitcoinScreen as the home screen
     );
   }
 }
