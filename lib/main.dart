@@ -1,26 +1,28 @@
-import 'package:flutetr_training_application/crud_with_prefs/crud_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'crud_with_prefs/crud_screen.dart';
+import 'crud_practice/crud_practice.dart';
+import 'crud_practice/crud_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<TodoProvider>(
-          create: (context) => TodoProvider(),
+        ChangeNotifierProvider<CrudProvider>(
+          create: (context) => CrudProvider(),
         )
       ],
       child: MaterialApp(
         title: 'Bitcoin Live Price',
         theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
-        home: const TodoScreen(), // Set BitcoinScreen as the home screen
+        home: const CrudPractice(), // Set BitcoinScreen as the home screen
       ),
     );
   }
