@@ -1,6 +1,8 @@
+import 'package:flutetr_training_application/crud_with_prefs/crud_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'api_by_myself/user_screen_vu.dart';
+import 'crud_with_prefs/crud_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,10 +11,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bitcoin Live Price',
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
-      home: const UserScreenVU(), // Set BitcoinScreen as the home screen
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<TodoProvider>(
+          create: (context) => TodoProvider(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Bitcoin Live Price',
+        theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
+        home: const TodoScreen(), // Set BitcoinScreen as the home screen
+      ),
     );
   }
 }
