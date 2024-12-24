@@ -13,9 +13,10 @@ class FlutterWebViewVU extends StackedView<FlutterWebViewVM>{
   Widget builder(BuildContext context, FlutterWebViewVM viewModel, Widget? child) {
     return Scaffold( appBar:  AppBar(title:  const Text("abdullahiftikhar.site"),),
       body:
-          viewModel.isLoading ? Center(
+          viewModel.isLoading ? const Center(
             child: CircularProgressIndicator(),
           ):
+              viewModel.isInternetOn == false ? const Center(child: Text("Please check your Internet\n and reopen the app again")):
               WebViewWidget(controller: viewModel.controller));
   }
 

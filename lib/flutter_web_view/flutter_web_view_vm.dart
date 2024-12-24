@@ -10,6 +10,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class FlutterWebViewVM extends BaseViewModel {
   WebViewController controller = WebViewController();
   bool isLoading = true;
+  bool isInternetOn = true;
 
 
   FlutterWebViewVM() {
@@ -33,11 +34,16 @@ class FlutterWebViewVM extends BaseViewModel {
               notifyListeners();
             },
             onHttpError: (HttpResponseError error) {
+              debugPrint("************ HttpResponseError ************");
+
               isLoading = true;
               notifyListeners();
             },
             onWebResourceError: (WebResourceError error) {
-              isLoading = true;
+
+              debugPrint("************ WebResourceError ************");
+              debugPrint("************ error : ${error} ************");
+              isInternetOn = false;
               notifyListeners();
             },
             onNavigationRequest: (NavigationRequest request) {
@@ -48,7 +54,8 @@ class FlutterWebViewVM extends BaseViewModel {
             },
           ),
         )
-        ..loadRequest(Uri.parse('https://abdullahiftikhar.site/'));
+        ..loadRequest(Uri.parse('https://abdullahiftikhar.site'));
+        // ..loadRequest(Uri.parse('https://www.youtube.com/'));
     } catch (e, stacktrace) {
       isLoading = true;
       notifyListeners();
