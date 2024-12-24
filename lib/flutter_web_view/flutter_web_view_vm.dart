@@ -39,12 +39,11 @@ class FlutterWebViewVM extends BaseViewModel {
               isLoading = true;
               notifyListeners();
             },
-            onWebResourceError: (WebResourceError error) {
 
+            onWebResourceError: (WebResourceError error) {
               debugPrint("************ WebResourceError ************");
               debugPrint("************ error : ${error} ************");
-              isInternetOn = false;
-              notifyListeners();
+              // q// notifyListeners();
             },
             onNavigationRequest: (NavigationRequest request) {
               if (request.url.startsWith('https://www.youtube.com/')) {
@@ -54,7 +53,7 @@ class FlutterWebViewVM extends BaseViewModel {
             },
           ),
         )
-        ..loadRequest(Uri.parse('https://abdullahiftikhar.site'));
+        ..loadRequest(Uri.parse('https://abdullahiftikhar.site/'));
         // ..loadRequest(Uri.parse('https://www.youtube.com/'));
     } catch (e, stacktrace) {
       isLoading = true;

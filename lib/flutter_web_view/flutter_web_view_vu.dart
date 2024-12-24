@@ -16,7 +16,7 @@ class FlutterWebViewVU extends StackedView<FlutterWebViewVM>{
           viewModel.isLoading ? const Center(
             child: CircularProgressIndicator(),
           ):
-              viewModel.isInternetOn == false ? const Center(child: Text("Please check your Internet\n and reopen the app again")):
+              // viewModel.isInternetOn == false ? const Center(child: Text("Please check your Internet\n and reopen the app again")):
               WebViewWidget(controller: viewModel.controller));
   }
 
