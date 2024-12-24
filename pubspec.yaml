@@ -44,6 +44,9 @@ dependencies:
   sqflite_common_ffi: ^2.3.3
   http: ^1.2.2
   html: ^0.15.5
+  webview_flutter: ^4.8.0
+  fluttertoast: ^8.2.10
+  connectivity_plus: ^6.1.1
 
 dev_dependencies:
   flutter_test:

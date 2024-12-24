@@ -15,8 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Bitcoin Live Price',
-        theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: false),
+      debugShowCheckedModeBanner: false, // Disable debug banner
+      title: 'Dark Theme App',
+      theme: ThemeData.dark(), // Set dark theme
+
         home: const FlutterWebViewVU(), // Set BitcoinScreen as the home screen
       );
 
