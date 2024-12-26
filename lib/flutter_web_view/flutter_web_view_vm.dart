@@ -12,7 +12,6 @@ class FlutterWebViewVM extends BaseViewModel {
   bool isLoading = true;
   bool isInternetOn = true;
 
-
   FlutterWebViewVM() {
     initializeWebView();
   }
@@ -54,50 +53,9 @@ class FlutterWebViewVM extends BaseViewModel {
           ),
         )
         ..loadRequest(Uri.parse('https://abdullahiftikhar.site/'));
-        // ..loadRequest(Uri.parse('https://www.youtube.com/'));
     } catch (e, stacktrace) {
       isLoading = true;
       notifyListeners();
     }
   }
 }
-
-//
-// }
-//
-//
-//
-// //
-// //
-// //
-// // import 'package:stacked/stacked.dart';
-// // import 'package:webview_flutter/webview_flutter.dart';
-// //
-// // class FlutterWebViewVM extends BaseViewModel{
-// //
-// //
-// //   FlutterWebViewVM(){
-// //     controller = WebViewController()
-// //       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-// //       ..setNavigationDelegate(NavigationDelegate(onProgress: (progress) {
-// //
-// //       },
-// //         onPageStarted: (String url) {},
-// //         onPageFinished: (String url) {},
-// //         onHttpError: (HttpResponseError error) {},
-// //         onWebResourceError: (WebResourceError error) {},
-// //         onNavigationRequest: (NavigationRequest request) {
-// //           if (request.url.startsWith('https://www.youtube.com/')) {
-// //             return NavigationDecision.prevent;
-// //           }
-// //           return NavigationDecision.navigate;
-// //         },
-// //       ),
-// //     )
-// //     ..loadRequest(Uri.parse('https://www.youtube.com/'));
-// //   }
-// //
-// //   WebViewController controller = WebViewController();
-// //
-// // }
-// //
