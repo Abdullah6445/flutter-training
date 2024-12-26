@@ -1,12 +1,7 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked/stacked.dart';
-
 import 'getx_screen_vm.dart';
-
 
 class GetxScreenVU extends StackedView<GetxScreenVM>{
    GetxScreenVU({super.key});

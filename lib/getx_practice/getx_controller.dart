@@ -6,8 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 class GetController extends GetxController{
 
   RxInt count = 0.obs;
@@ -26,7 +24,6 @@ class GetController extends GetxController{
 
   }
 
-
   Future<void> saveNamesList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String jsonList = jsonEncode(namesList);        // list ko json ki form me le k jata hai
@@ -41,10 +38,6 @@ class GetController extends GetxController{
       namesList.value = jsonDecode(jsonList);
     }
   }
-
-
-
-
 
   void add(String data){
     x++;
@@ -72,26 +65,8 @@ class GetController extends GetxController{
     }
   }
 
-
   void remove(int index){
     namesList.removeAt(index);
     saveNamesList();
-
-
   }
-
-  //
-  // Future<void> increment() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   count++;
-  //   await prefs.setInt("count", count.value);
-  //   update();
-  // }
-  //
-  // loadPrefs() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   count.value =  prefs.getInt("count") ?? 0;
-  //
-  //
-  // }
 }
