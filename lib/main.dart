@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
-import 'crud_practice/crud_practice.dart';
-import 'crud_practice/crud_provider.dart';
-import 'flutter_web_view/flutter_web_view_vu.dart';
+import 'getx_practice/getx_screen_vu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false, // Disable debug banner
       title: 'Dark Theme App',
       theme: ThemeData.dark(), // Set dark theme
 
-        home: const FlutterWebViewVU(), // Set BitcoinScreen as the home screen
+        home:  GetxScreenVU(), // Set BitcoinScreen as the home screen
       );
 
   }
