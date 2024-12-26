@@ -10,6 +10,6 @@ class GetxScreenVM extends BaseViewModel{
 
 
 
-  final GetXController counterController = Get.put(GetXController());
+
 
 }

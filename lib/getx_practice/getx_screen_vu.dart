@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 import 'getx_controller.dart';
@@ -19,15 +22,13 @@ class GetxScreenVU extends StackedView<GetxScreenVM>{
     return Scaffold(
 
       appBar: AppBar(title:  const Text("Getx Screen")),
-      body: Obx(() {
-        debugPrint("\n********** text rebuild **********\n");
-
-
-        return Center(child: Text(viewModel.counterController.counter.toString()));
-      },),
+      body: Center(child: Consumer<ProviderController>(builder: (BuildContext context, ProviderController value, Widget? child) {
+        return Text(value.counter.toString());
+      },)
+    ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         debugPrint("\n********** floating button rebuild **********\n");
-        viewModel.counterController.increment();
+        context.read<ProviderController>().increment();
 
 
 

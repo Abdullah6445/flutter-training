@@ -1,41 +1,17 @@
 
-import 'dart:ffi';
 
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class GetXController extends GetxController{
+class ProviderController extends ChangeNotifier{
 
-  RxInt counter = 0.obs;
+  int counter = 0;
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadPrefs();
-  }
-
-  increment() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  increment() {
     counter++;
-    await prefs.setInt("counter", counter.value);
-    update();
+    notifyListeners();
   }
 
-  loadPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    counter.value =  prefs.getInt("counter") ?? 0;
-}
 
 }
-
-
-
-//
-// class CounterController extends GetxController {
-//   var counter = 0;
-//   increment() {
-//     counter++;
-//     update();
-//   }
-// }
