@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'getx_screen_vm.dart';
 
 class GetxScreenVU extends StackedView<GetxScreenVM>{
-   GetxScreenVU({super.key});
+   const GetxScreenVU({super.key});
 
   @override
   Widget builder(BuildContext context, GetxScreenVM viewModel, Widget? child) {
@@ -27,7 +27,7 @@ class GetxScreenVU extends StackedView<GetxScreenVM>{
             onPressed: () {
               viewModel.getController.saveEdit();
             },
-             child: Text("Done"),
+             child: const Text("Done"),
           ),
 
           Expanded(
@@ -49,13 +49,13 @@ class GetxScreenVU extends StackedView<GetxScreenVM>{
                           debugPrint("\n********** edit button rebuild **********\n");
                           viewModel.getController.edit(index);
 
-                          }, icon: Icon(Icons.edit,color: Colors.green,) , ),
+                          }, icon: const Icon(Icons.edit,color: Colors.green,) , ),
                           IconButton(onPressed: () {
                             debugPrint("\n********** remove button rebuild **********\n");
 
                             viewModel.getController.remove(index);
 
-                          }, icon: Icon(Icons.delete,color: Colors.red,) , ),
+                          }, icon: const Icon(Icons.delete,color: Colors.red,) , ),
                         ],
                       ),
                     ),
@@ -68,14 +68,11 @@ class GetxScreenVU extends StackedView<GetxScreenVM>{
         ],
       ),
 
-
-
       floatingActionButton: FloatingActionButton(onPressed: () {
         debugPrint("\n********** add button rebuild **********\n");
         viewModel.getController.add("name");
 
       },child: const Icon(Icons.add),),
-
     );
   }
 
